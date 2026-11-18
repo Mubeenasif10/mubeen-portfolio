@@ -1,3 +1,4 @@
+
 import SectionTitle from '../components/SectionTitle'
 import ProjectCard from '../components/ProjectCard'
 import { projects } from '../data/projects'
@@ -10,8 +11,9 @@ export default function Projects() {
           index="04"
           eyebrow="Projects"
           title="Selected work."
-          text="Live and GitHub buttons stay inactive until a real URL is added in src/data/projects.js."
+          text="Explore a selection of modern, responsive websites and interactive web experiences built with React.js and modern web technologies."
         />
+
         <div className="projects-grid">
           {projects.map((project) => (
             <ProjectCard key={project.id} project={project} />
