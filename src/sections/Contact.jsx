@@ -1,3 +1,4 @@
+
 import { useState } from 'react'
 import SectionTitle from '../components/SectionTitle'
 import SocialLinks from '../components/SocialLinks'
@@ -20,13 +21,23 @@ export default function Contact() {
 
   function updateField(event) {
     const { name, value } = event.target
-    setValues((current) => ({ ...current, [name]: value }))
-    setErrors((current) => ({ ...current, [name]: undefined }))
+
+    setValues((current) => ({
+      ...current,
+      [name]: value,
+    }))
+
+    setErrors((current) => ({
+      ...current,
+      [name]: undefined,
+    }))
   }
 
   async function handleSubmit(event) {
     event.preventDefault()
+
     const nextErrors = validateContact(values)
+
     setErrors(nextErrors)
     setStatusMessage('')
 
@@ -38,31 +49,37 @@ export default function Contact() {
     if (!isSupabaseConfigured || !supabase) {
       setStatus('unconfigured')
       setStatusMessage(
-        'The form is valid, but Supabase is not configured, so the message was not saved. Add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY, then create the contact_messages table.',
+        'Supabase is not configured. Please check your environment variables.'
       )
       return
     }
 
     setStatus('sending')
 
-    const { error } = await supabase.from('contact_messages').insert({
-      name: values.name.trim(),
-      email: values.email.trim(),
-      subject: values.subject.trim(),
-      message: values.message.trim(),
-    })
+    const { error } = await supabase
+      .from('contact_messages')
+      .insert({
+        name: values.name.trim(),
+        email: values.email.trim(),
+        subject: values.subject.trim(),
+        message: values.message.trim(),
+      })
 
     if (error) {
+      console.error('Supabase error:', error)
+
       setStatus('error')
       setStatusMessage(
-        'The message could not be saved. Check the Supabase table, Row Level Security policy, and anon key, then try again.',
+        `Error: ${error.message} | Code: ${error.code || 'N/A'}`
       )
       return
     }
 
     setValues(emptyForm)
     setStatus('sent')
-    setStatusMessage('Your message was saved. I will read it from the Supabase contact_messages table.')
+    setStatusMessage(
+      'Your message was saved successfully. Thank you for contacting me!'
+    )
   }
 
   return (
@@ -74,8 +91,13 @@ export default function Contact() {
           title="Start a conversation."
           text="Send a message about a website, a fix, or a project you want to discuss."
         />
+
         <div className="contact-grid">
-          <form className="contact-form" onSubmit={handleSubmit} noValidate>
+          <form
+            className="contact-form"
+            onSubmit={handleSubmit}
+            noValidate
+          >
             <div className="form-row">
               <Field
                 id="name"
@@ -86,6 +108,7 @@ export default function Contact() {
                 autoComplete="name"
                 onChange={updateField}
               />
+
               <Field
                 id="email"
                 label="Email"
@@ -97,6 +120,7 @@ export default function Contact() {
                 onChange={updateField}
               />
             </div>
+
             <Field
               id="subject"
               label="Subject"
@@ -106,8 +130,10 @@ export default function Contact() {
               autoComplete="off"
               onChange={updateField}
             />
+
             <div className="field">
               <label htmlFor="message">Message</label>
+
               <textarea
                 id="message"
                 name="message"
@@ -115,17 +141,26 @@ export default function Contact() {
                 value={values.message}
                 onChange={updateField}
                 aria-invalid={Boolean(errors.message)}
-                aria-describedby={errors.message ? 'message-error' : undefined}
+                aria-describedby={
+                  errors.message ? 'message-error' : undefined
+                }
               />
+
               {errors.message ? (
                 <p id="message-error" className="field-error">
                   {errors.message}
                 </p>
               ) : null}
             </div>
-            <button className="btn btn-primary" type="submit" disabled={status === 'sending'}>
+
+            <button
+              className="btn btn-primary"
+              type="submit"
+              disabled={status === 'sending'}
+            >
               {status === 'sending' ? 'Sending…' : 'Send Message'}
             </button>
+
             <p
               className={`form-status form-status-${status}`}
               role="status"
@@ -134,13 +169,16 @@ export default function Contact() {
               {statusMessage}
             </p>
           </form>
+
           <aside className="contact-aside">
             <h3>Direct links</h3>
+
             <p>
               {profile.email
                 ? profile.email
                 : 'Add your email in src/data/profile.js to show it here.'}
             </p>
+
             <SocialLinks items={profile.socials} />
           </aside>
         </div>
@@ -149,10 +187,20 @@ export default function Contact() {
   )
 }
 
-function Field({ id, label, name, type = 'text', value, error, autoComplete, onChange }) {
+function Field({
+  id,
+  label,
+  name,
+  type = 'text',
+  value,
+  error,
+  autoComplete,
+  onChange,
+}) {
   return (
     <div className="field">
       <label htmlFor={id}>{label}</label>
+
       <input
         id={id}
         name={name}
@@ -163,6 +211,7 @@ function Field({ id, label, name, type = 'text', value, error, autoComplete, onC
         aria-invalid={Boolean(error)}
         aria-describedby={error ? `${id}-error` : undefined}
       />
+
       {error ? (
         <p id={`${id}-error`} className="field-error">
           {error}
