@@ -8,16 +8,30 @@ export default function Hero() {
       <div className="container hero-grid">
         <div>
           <p className="eyebrow">{profile.title}</p>
+
           <h1>{profile.name}</h1>
+
           <p className="hero-headline">{profile.headline}</p>
+
           <p className="hero-intro">{profile.introduction}</p>
 
           <div className="hero-actions">
             <a className="btn btn-primary" href="#projects">
               View Projects
             </a>
+
             <a className="btn btn-secondary" href="#contact">
               Contact Me
+            </a>
+
+            <a
+              className="btn btn-secondary"
+              href="/Muhammad-Mubeen-Asif-CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              download="Muhammad-Mubeen-Asif-CV.pdf"
+            >
+              Download CV
             </a>
           </div>
 
@@ -26,18 +40,27 @@ export default function Hero() {
 
         <aside className="hero-panel" aria-label="Core expertise">
           <p className="panel-kicker">Core Expertise</p>
+
           <ul>
             <li>
               <strong>Frontend Development</strong>
-              <span>Modern React interfaces and responsive web layouts.</span>
+              <span>
+                Modern React interfaces and responsive web layouts.
+              </span>
             </li>
+
             <li>
               <strong>Backend Development</strong>
-              <span>Node.js, Express.js, and REST API development.</span>
+              <span>
+                Node.js, Express.js, and REST API development.
+              </span>
             </li>
+
             <li>
               <strong>Supabase</strong>
-              <span>Backend services and database management.</span>
+              <span>
+                Backend services and database management.
+              </span>
             </li>
           </ul>
         </aside>
