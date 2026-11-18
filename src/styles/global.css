@@ -1,3 +1,4 @@
+
 :root {
   --bg: #090b0f;
   --bg-alt: #0e1218;
@@ -270,6 +271,19 @@ ol {
 .nav-cta {
   min-height: 2.4rem;
   padding-inline: 0.95rem;
+}
+
+/* Navbar Contact Me button text fix */
+.site-nav a.nav-cta,
+.site-nav a.nav-cta:link,
+.site-nav a.nav-cta:visited,
+.site-nav a.nav-cta:hover {
+  color: #ffffff !important;
+  background: var(--blue);
+}
+
+.site-nav a.nav-cta:hover {
+  background: var(--blue-strong);
 }
 
 .hero,
