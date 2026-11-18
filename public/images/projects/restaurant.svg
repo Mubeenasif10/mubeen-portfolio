@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img">
+  <rect width="800" height="500" fill="#10141b"/>
+  <rect x="28" y="28" width="744" height="444" rx="18" fill="#0c1016" stroke="#2a3548"/>
+  <circle cx="64" cy="64" r="6" fill="#c9797e"/>
+  <circle cx="86" cy="64" r="6" fill="#cbb888"/>
+  <circle cx="108" cy="64" r="6" fill="#7fbfa8"/>
+  <rect x="56" y="110" width="688" height="150" rx="14" fill="#172033"/>
+  <rect x="80" y="150" width="180" height="14" rx="7" fill="#3ec8e0"/>
+  <rect x="80" y="178" width="280" height="10" rx="5" fill="#31445f"/>
+  <rect x="56" y="286" width="210" height="120" rx="12" fill="#151b26" stroke="#2a3548"/>
+  <rect x="286" y="286" width="210" height="120" rx="12" fill="#151b26" stroke="#2a3548"/>
+  <rect x="516" y="286" width="228" height="120" rx="12" fill="#151b26" stroke="#2a3548"/>
+  <text x="56" y="452" fill="#8ea0b5" font-family="Segoe UI, sans-serif" font-size="16">Restaurant Website · Preview placeholder</text>
+</svg>

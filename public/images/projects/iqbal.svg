@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img">
+  <rect width="800" height="500" fill="#10141b"/>
+  <rect x="28" y="28" width="744" height="444" rx="18" fill="#0c1016" stroke="#2a3548"/>
+  <circle cx="64" cy="64" r="6" fill="#c9797e"/>
+  <circle cx="86" cy="64" r="6" fill="#cbb888"/>
+  <circle cx="108" cy="64" r="6" fill="#7fbfa8"/>
+  <rect x="56" y="120" width="6" height="250" fill="#3ec8e0"/>
+  <text x="86" y="170" fill="#f4f7fb" font-family="Georgia, serif" font-size="40">Allama Iqbal</text>
+  <rect x="86" y="200" width="460" height="12" rx="6" fill="#243044"/>
+  <rect x="86" y="226" width="420" height="12" rx="6" fill="#243044"/>
+  <rect x="86" y="252" width="380" height="12" rx="6" fill="#243044"/>
+  <rect x="86" y="278" width="300" height="12" rx="6" fill="#243044"/>
+  <text x="56" y="452" fill="#8ea0b5" font-family="Segoe UI, sans-serif" font-size="16">Tribute Website · Preview placeholder</text>
+</svg>

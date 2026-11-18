@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img">
+  <rect width="800" height="500" fill="#10141b"/>
+  <rect x="28" y="28" width="744" height="444" rx="18" fill="#0c1016" stroke="#2a3548"/>
+  <circle cx="64" cy="64" r="6" fill="#c9797e"/>
+  <circle cx="86" cy="64" r="6" fill="#cbb888"/>
+  <circle cx="108" cy="64" r="6" fill="#7fbfa8"/>
+  <rect x="180" y="130" width="440" height="240" rx="16" fill="#151b26" stroke="#2a3548"/>
+  <text x="400" y="210" text-anchor="middle" fill="#f4f7fb" font-family="Georgia, serif" font-size="54">24</text>
+  <text x="400" y="246" text-anchor="middle" fill="#8ea0b5" font-family="Segoe UI, sans-serif" font-size="16">years</text>
+  <rect x="250" y="280" width="300" height="42" rx="10" fill="#3b82f6"/>
+  <text x="56" y="452" fill="#8ea0b5" font-family="Segoe UI, sans-serif" font-size="16">Age Calculator · Preview placeholder</text>
+</svg>
