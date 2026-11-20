@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react'
 import { navLinks, profile } from '../data/profile'
 
@@ -6,33 +7,46 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 30)
+    }
+
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   useEffect(() => {
-    const onKey = (event) => {
+    const handleKeyDown = (event) => {
       if (event.key === 'Escape') setOpen(false)
     }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
+
+    window.addEventListener('keydown', handleKeyDown)
+
+    return () => window.removeEventListener('keydown', handleKeyDown)
   }, [])
 
   useEffect(() => {
     document.body.classList.toggle('nav-open', open)
+
     return () => document.body.classList.remove('nav-open')
   }, [open])
 
   return (
-    <header className={scrolled ? 'site-header is-scrolled' : 'site-header'}>
-      <div className="container nav-bar">
-        <a className="brand" href="#home" onClick={() => setOpen(false)}>
-          <span className="brand-mark" aria-hidden="true">
-            MA
-          </span>
-          <span className="brand-text">
+    <header
+      className={`premium-header ${scrolled ? 'is-scrolled' : ''}`}
+    >
+      <div className="container premium-nav-container">
+        <a
+          href="#home"
+          className="premium-brand"
+          onClick={() => setOpen(false)}
+          aria-label="Go to homepage"
+        >
+          <span className="premium-brand-mark">M<span>A</span></span>
+
+          <span className="premium-brand-info">
             <strong>{profile.name}</strong>
             <small>{profile.title}</small>
           </span>
@@ -40,29 +54,42 @@ export default function Navbar() {
 
         <button
           type="button"
-          className="nav-toggle"
+          className={`premium-menu-toggle ${open ? 'active' : ''}`}
+          onClick={() => setOpen(!open)}
+          aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
           aria-expanded={open}
-          aria-controls="site-nav"
-          onClick={() => setOpen((value) => !value)}
+          aria-controls="premium-navigation"
         >
-          <span className="sr-only">{open ? 'Close menu' : 'Open menu'}</span>
-          <span aria-hidden="true" />
-          <span aria-hidden="true" />
-          <span aria-hidden="true" />
+          <span />
+          <span />
+          <span />
         </button>
 
-        <nav id="site-nav" className={open ? 'site-nav is-open' : 'site-nav'} aria-label="Primary">
+        <nav
+          id="premium-navigation"
+          className={`premium-navigation ${open ? 'is-open' : ''}`}
+          aria-label="Main navigation"
+        >
           <ul>
             {navLinks.map((link) => (
               <li key={link.href}>
-                <a href={link.href} onClick={() => setOpen(false)}>
+                <a
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                >
                   {link.label}
                 </a>
               </li>
             ))}
           </ul>
-          <a className="btn btn-primary nav-cta" href="#contact" onClick={() => setOpen(false)}>
-            Contact Me
+
+          <a
+            href="#contact"
+            className="premium-contact-button"
+            onClick={() => setOpen(false)}
+          >
+            Let's Talk
+            <span aria-hidden="true">↗</span>
           </a>
         </nav>
       </div>

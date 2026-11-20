@@ -83,104 +83,145 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="section section-alt">
+    <section id="contact" className="section section-alt contact-section">
       <div className="container">
         <SectionTitle
           index="06"
-          eyebrow="Contact"
-          title="Start a conversation."
-          text="Send a message about a website, a fix, or a project you want to discuss."
+          eyebrow="Get In Touch"
+          title="Let's create something meaningful."
+          text="Have a project in mind or want to discuss an opportunity? Send me a message and let's connect."
         />
 
-        <div className="contact-grid">
-          <form
-            className="contact-form"
-            onSubmit={handleSubmit}
-            noValidate
-          >
-            <div className="form-row">
-              <Field
-                id="name"
-                label="Name"
-                name="name"
-                value={values.name}
-                error={errors.name}
-                autoComplete="name"
-                onChange={updateField}
-              />
+        <div className="contact-showcase">
+          <div className="contact-info-panel">
+            <span className="contact-panel-eyebrow">
+              HAVE A PROJECT IN MIND?
+            </span>
 
-              <Field
-                id="email"
-                label="Email"
-                name="email"
-                type="email"
-                value={values.email}
-                error={errors.email}
-                autoComplete="email"
-                onChange={updateField}
-              />
-            </div>
+            <h3>
+              Let's turn your
+              <span> ideas into reality.</span>
+            </h3>
 
-            <Field
-              id="subject"
-              label="Subject"
-              name="subject"
-              value={values.subject}
-              error={errors.subject}
-              autoComplete="off"
-              onChange={updateField}
-            />
-
-            <div className="field">
-              <label htmlFor="message">Message</label>
-
-              <textarea
-                id="message"
-                name="message"
-                rows="6"
-                value={values.message}
-                onChange={updateField}
-                aria-invalid={Boolean(errors.message)}
-                aria-describedby={
-                  errors.message ? 'message-error' : undefined
-                }
-              />
-
-              {errors.message ? (
-                <p id="message-error" className="field-error">
-                  {errors.message}
-                </p>
-              ) : null}
-            </div>
-
-            <button
-              className="btn btn-primary"
-              type="submit"
-              disabled={status === 'sending'}
-            >
-              {status === 'sending' ? 'Sending…' : 'Send Message'}
-            </button>
-
-            <p
-              className={`form-status form-status-${status}`}
-              role="status"
-              aria-live="polite"
-            >
-              {statusMessage}
-            </p>
-          </form>
-
-          <aside className="contact-aside">
-            <h3>Direct links</h3>
-
-            <p>
-              {profile.email
-                ? profile.email
-                : 'Add your email in src/data/profile.js to show it here.'}
+            <p className="contact-info-description">
+              I'm always interested in discussing web development
+              projects, creative ideas, and opportunities to build
+              something useful.
             </p>
 
-            <SocialLinks items={profile.socials} />
-          </aside>
+            <div className="contact-detail">
+              <span className="contact-detail-icon">@</span>
+              <div>
+                <span className="contact-detail-label">EMAIL ADDRESS</span>
+                <a href={`https://mail.google.com/mail/?view=cm&fs=1&to=${profile.email}`} target="_blank" rel="noopener noreferrer">
+                  {profile.email}
+                </a>
+              </div>
+            </div>
+
+            <div className="contact-social-block">
+              <span className="contact-detail-label">
+                CONNECT WITH ME
+              </span>
+              <SocialLinks items={profile.socials} />
+            </div>
+
+            <div className="contact-availability">
+              <span className="contact-availability-dot" />
+              <span>Open to meaningful opportunities</span>
+            </div>
+          </div>
+
+          <div className="contact-form-panel">
+            <div className="contact-form-heading">
+              <span className="contact-panel-eyebrow">
+                SEND A MESSAGE
+              </span>
+              <h3>Tell me about your project.</h3>
+              <p>
+                Fill out the form below. I'll be happy to hear from you.
+              </p>
+            </div>
+
+            <form
+              className="contact-form"
+              onSubmit={handleSubmit}
+              noValidate
+            >
+              <div className="form-row">
+                <Field
+                  id="name"
+                  label="Your Name"
+                  name="name"
+                  value={values.name}
+                  error={errors.name}
+                  autoComplete="name"
+                  onChange={updateField}
+                />
+
+                <Field
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  type="email"
+                  value={values.email}
+                  error={errors.email}
+                  autoComplete="email"
+                  onChange={updateField}
+                />
+              </div>
+
+              <Field
+                id="subject"
+                label="Subject"
+                name="subject"
+                value={values.subject}
+                error={errors.subject}
+                autoComplete="off"
+                onChange={updateField}
+              />
+
+              <div className="field">
+                <label htmlFor="message">Your Message</label>
+
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="6"
+                  placeholder="Tell me a little about what you have in mind..."
+                  value={values.message}
+                  onChange={updateField}
+                  aria-invalid={Boolean(errors.message)}
+                  aria-describedby={
+                    errors.message ? 'message-error' : undefined
+                  }
+                />
+
+                {errors.message ? (
+                  <p id="message-error" className="field-error">
+                    {errors.message}
+                  </p>
+                ) : null}
+              </div>
+
+              <button
+                className="btn btn-primary contact-submit"
+                type="submit"
+                disabled={status === 'sending'}
+              >
+                {status === 'sending' ? 'Sending...' : 'Send Message'}
+                <span aria-hidden="true">↗</span>
+              </button>
+
+              <p
+                className={`form-status form-status-${status}`}
+                role="status"
+                aria-live="polite"
+              >
+                {statusMessage}
+              </p>
+            </form>
+          </div>
         </div>
       </div>
     </section>

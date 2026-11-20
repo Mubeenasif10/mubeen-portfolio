@@ -4,66 +4,103 @@ import SocialLinks from '../components/SocialLinks'
 
 export default function Hero() {
   return (
-    <section id="home" className="hero">
-      <div className="container hero-grid">
-        <div>
-          <p className="eyebrow">{profile.title}</p>
+    <section id="home" className="hero premium-hero">
+      <div className="container premium-hero-grid">
+        <div className="premium-hero-content">
+          <div className="premium-hero-status">
+            <span className="premium-status-dot" />
+            <span>Available for Web Development Projects</span>
+          </div>
 
-          <h1>{profile.name}</h1>
+          <p className="premium-hero-eyebrow">
+            {profile.title}
+          </p>
 
-          <p className="hero-headline">{profile.headline}</p>
+          <h1>
+            Muhammad Mubeen
+            <span>Asif.</span>
+          </h1>
 
-          <p className="hero-intro">{profile.introduction}</p>
+          <h2 className="premium-hero-headline">
+            {profile.headline}
+          </h2>
 
-          <div className="hero-actions">
-            <a className="btn btn-primary" href="#projects">
-              View Projects
+          <p className="premium-hero-description">
+            {profile.introduction} I enjoy turning ideas into
+            meaningful digital experiences through clean design
+            and functional development.
+          </p>
+
+          <div className="premium-hero-actions">
+            <a className="premium-hero-primary" href="#projects">
+              Explore My Projects
+              <span aria-hidden="true">↗</span>
             </a>
 
-            <a className="btn btn-secondary" href="#contact">
-              Contact Me
+            <a className="premium-hero-secondary" href="#contact">
+              Let's Connect
+              <span aria-hidden="true">→</span>
             </a>
 
             <a
-              className="btn btn-secondary"
+              className="premium-hero-secondary"
               href="/Muhammad-Mubeen-Asif-CV.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              download="Muhammad-Mubeen-Asif-CV.pdf"
             >
-              Download CV
+              View CV
+              <span aria-hidden="true">↗</span>
             </a>
           </div>
 
-          <SocialLinks items={profile.socials} />
+          <div className="premium-hero-social">
+            <span className="premium-social-label">
+              FIND ME ONLINE
+            </span>
+
+            <SocialLinks items={profile.socials} />
+          </div>
         </div>
 
-        <aside className="hero-panel" aria-label="Core expertise">
-          <p className="panel-kicker">Core Expertise</p>
+        <div className="premium-hero-visual">
+          <div className="premium-hero-glow" />
 
-          <ul>
-            <li>
-              <strong>Frontend Development</strong>
-              <span>
-                Modern React interfaces and responsive web layouts.
-              </span>
-            </li>
+          <div className="premium-hero-image-frame">
+            <div className="premium-hero-image-inner">
+              <img
+                src="/images/mubeen-profile.jpg"
+                alt="Muhammad Mubeen Asif - Full Stack Web Developer"
+                className="premium-hero-photo"
+              />
+            </div>
+          </div>
 
-            <li>
-              <strong>Backend Development</strong>
-              <span>
-                Node.js, Express.js, and REST API development.
-              </span>
-            </li>
+          <div className="premium-hero-image-decoration" />
 
-            <li>
-              <strong>Supabase</strong>
-              <span>
-                Backend services and database management.
-              </span>
-            </li>
-          </ul>
-        </aside>
+          <div className="premium-hero-floating-card">
+            <span className="premium-floating-icon">✳</span>
+
+            <div>
+              <strong>Creative Developer</strong>
+              <span>Designing & Building for the Web</span>
+            </div>
+          </div>
+
+          <div className="premium-hero-location">
+            <span className="premium-location-dot" />
+            Based in Pakistan
+          </div>
+        </div>
+      </div>
+
+      <div className="premium-hero-bottom">
+        <div className="container premium-hero-bottom-inner">
+          <span>DESIGN</span>
+          <span className="premium-bottom-line" />
+          <span>DEVELOPMENT</span>
+          <span className="premium-bottom-line" />
+          <span>DIGITAL EXPERIENCES</span>
+        </div>
       </div>
     </section>
   )
